@@ -1,0 +1,18 @@
+.jd-duplicate {
+    color: rgba(0, 115, 170, 1);
+    cursor: pointer;
+}
+
+.jd-duplicate:hover {
+    color: rgba(0, 115, 170, 0.5);
+}
+
+#minor-publishing {
+    padding-bottom: 10px;
+}
+
+.jd-duplicate-submitbox-button {
+    display: block;
+    float: right;
+    margin-bottom: 10px;
+}
