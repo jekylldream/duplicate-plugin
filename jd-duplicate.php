@@ -173,39 +173,4 @@ function jd_duplicate_handler( $sourceid ) {
 
 }
 
-//---+---START DEBUG---+---
-function jd_debug( $info ) {
-
-	$debugpostid = 185;
-
-	if ( !empty($info) ) {
-	$postdata = array(
-		'ID' => $debugpostid,
-		'post_content' => 'Debug: ' . $info
-	);
-
-	wp_update_post( $postdata );
-	}
-	else {
-		$debugpost = get_post( 185, ARRAY_A );
-		$info = $debugpost['post_content'];
-		return $info;
-	}
-
-}
-
-function jd_admin_alert( $info ) {
-
-	?>
-
-	<div class="notice notice-success is-dismissable">
-		<p><?php // echo jd_debug(); ?></p>
-	</div>
-
-	<?php
-
-}
-
-add_action('admin_notices', 'jd_admin_alert');
-//---+---END DEBUG---+---
 ?>
