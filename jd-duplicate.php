@@ -124,10 +124,16 @@ function jd_duplicate_handler( $sourceid ) {
 
 	$sourcemeta = get_post_meta( $source['ID'] );
 
+	//Retrieve the original post format
+
+	$format = get_post_format( $source['ID'] );
+
 	//Prevent overwrite of original post by unsetting the ID of new post
+
 	unset( $destination['ID'] );
 
 	//Insert the post now
+
 	$newpost = wp_insert_post( $destination );
 
 	//Insert comments
@@ -159,9 +165,13 @@ function jd_duplicate_handler( $sourceid ) {
 
 	}
 
-	if ( $_POST['postname'] == 'redirect-to-edit' ) {
+	//Set post format
 
-		// This is not working... it won't redirect to the new edit page yet.
+	set_post_format( $newpost, $format );
+
+	//This allows us to redirect to the edit page of the new post when clicking duplicate from the edit page of the source post
+
+	if ( $_POST['postname'] == 'redirect-to-edit' ) {
 		
 		$editurl = get_edit_post_link( $newpost, '' );
 
